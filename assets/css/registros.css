@@ -1,0 +1,28 @@
+.registros{
+    width: 100%;
+    user-select: none;
+    text-align: center;
+}
+
+.registros th{
+    height: 50px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding-left: 20px;
+    font-size: 1.2rem;    
+}
+.registros td{
+    height: 50px;
+    padding-left: 20px;
+}
+
+.registros th:last-child,
+.registros td:last-child{
+    padding: 0;
+    min-width: 140px;
+    text-align: center;
+}
+
+.records tr:hover{
+    background-color: var(--secundary-color);
+}
