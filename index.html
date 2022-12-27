@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/registros.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
     <title>Cadastramento</title>
 </head>
 
@@ -13,16 +17,16 @@
         <h1 class="titulo">Cadastro de funcionários</h1>
     </header>
     <main>
-        <button type="button" class="botao-cadastrar" id="cadastrarFuncionario"> Cadastrar Funcionários</button>
+        <button type="button" class="botao cadastrar" id="cadastrarFuncionario"> Cadastrar Funcionários</button>
         <table class="registros">
             <thead>
                 <tr>
-                <th> Nome</th>
-                <th>E-mail</th>
-                <th>Celular</th>
-                <th>Cargo</th>
-                <th>Cidade</th>
-                <th>Ação</th>
+                    <th> Nome</th>
+                    <th>E-mail</th>
+                    <th>Celular</th>
+                    <th>Cargo</th>
+                    <th>Cidade</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
 
@@ -34,13 +38,35 @@
                     <td>Aux. Admistrativo</td>
                     <td>São Paulo</td>
                     <td>
-                        <button type="button" class="botao-editar">Editar</button>
-                        <button type="button" class="botao-excluir">Excluir</button>
+                        <button type="button" class="botao editar">Editar</button>
+                        <button type="button" class="botao excluir">Excluir</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Novo Funcionário</h2>
+                    <span class="modal-close" id="modalClose">&#10006;</span>
+                </header>
+                <form class="modal-form">
+                    <input type="text" class="modal-field" placeholder="Nome do Funcionário">
+                    <input type="email" class="modal-field" placeholder="E-mail do Funcionário">
+                    <input type="text" class="modal-field" placeholder="Celular do Funcionário">
+                    <input type="text" class="modal-field" placeholder="Cargo do Funcionário">
+                    <input type="text" class="modal-field" placeholder="Cidade do Funcionário">
+                </form>
+                <footer class="modal-footer">
+                    <button class="botao salvar">Salvar</button>
+                    <button class="botao cancelar">Cancelar</button>
+                </footer>
+            </div>
+        </div>
     </main>
-    
+    <footer>
+        Copyright &copy; Feito por Thialla Menezes
+    </footer>
 </body>
+
 </html>
