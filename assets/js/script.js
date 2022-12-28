@@ -12,10 +12,10 @@ document.getElementById("modalClose")
 .addEventListener("click", closeModal)
 
 const informacoesFuncionarios = {
-    nome: "Ryan",
-    email: "ryan@gmail.com",
+    nome: "Luan",
+    email: "luan@gmail.com",
     celular: "11967583922",
-    cargo: "Chefe",
+    cargo: "Administrativo",
     cidade: "São Paulo"
 }
 
@@ -23,9 +23,23 @@ const informacoesFuncionarios = {
 const getLocalStorage = () => JSON.parse(localStorage.getItem("dados_funcionarios")) ?? []
 const setLocalStorage = (dadosFuncionarios) => localStorage.setItem("dados_funcionarios", JSON.stringify(dadosFuncionarios))
 
-// crud - Creat- (Criar) //
+//CRUD - Creat- (Criar), Read (ler), Update (atualizar), Delete (excluir) //
 const criarFuncionario = (funcionario) => {
     const dadosFuncionarios = getLocalStorage() 
     dadosFuncionarios.push (funcionario)
     setLocalStorage(dadosFuncionarios)   
+}
+
+const readFuncionario = () => getLocalStorage()
+
+const updateFuncionario = (index, funcionario) => {
+    const dadosFuncionarios = readFuncionario()
+    dadosFuncionarios[index] = funcionario
+    setLocalStorage(dadosFuncionarios)
+}
+
+const deleteFuncionario = (index) => {
+    const dadosFuncionarios = readFuncionario()
+    dadosFuncionarios.splice(index,1)
+    setLocalStorage(dadosFuncionarios)
 }
