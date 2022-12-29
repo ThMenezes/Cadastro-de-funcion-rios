@@ -23,6 +23,31 @@
     text-align: center;
 }
 
-.records tr:hover{
+.registros tr:hover{
     background-color: var(--secundary-color);
+}
+
+@media(max-width:480px) {
+    .registros {
+        border-spacing: 5px;
+    }
+    .registros thead {
+        display:none;
+    }
+    .registros tr {
+        box-shadow: 0 1px 3px var(--shadow-color);
+    }
+    .registros td:not(:first-child) {
+        display:flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .registros td {
+        margin:10px 0;
+    }
+
+    .registros tr:hover {
+        background-color: inherit;
+    }
 }

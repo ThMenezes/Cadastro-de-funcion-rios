@@ -32,6 +32,7 @@
     height: 40px;
     line-height: 40px;
     font-size: 1rem;
+    color: var(--text-color);
 }
 
 .modal-close{
@@ -79,9 +80,27 @@
 }
 
 .botao.salvar {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color);   
 }
 
 .botao.cancelar {
     background-color: var(--quaternary-color);
+}
+
+@media (max-width:480px) {
+    .modal {
+        top:100%;
+        transition: all 1s ease;
+    }
+    .modal.active {
+        top:0;
+    }
+    .modal-content {
+        margin:0;
+        width:100%;
+        position:fixed;
+    }
+    .modal-field {
+        width:100%;
+    }
 }
