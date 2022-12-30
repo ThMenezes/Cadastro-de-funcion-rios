@@ -1,18 +1,18 @@
 // abrir modal de novo cadastramento //
 const openModal = () => document.getElementById('modal')
-.classList.add('active')
+    .classList.add('active')
 
 const closeModal = () => {
     apagarCampos()
     document.getElementById('modal')
-.classList.remove('active')
+        .classList.remove('active')
 }
 
 document.getElementById('cadastrarFuncionario')
-.addEventListener("click", openModal)
+    .addEventListener("click", openModal)
 
 document.getElementById("modalClose")
-.addEventListener("click", closeModal)
+    .addEventListener("click", closeModal)
 
 // envio e retorno dos dados ao localStorage //
 const getLocalStorage = () => JSON.parse(localStorage.getItem("dados_funcionarios")) ?? []
@@ -20,22 +20,22 @@ const setLocalStorage = (dadosFuncionarios) => localStorage.setItem("dados_funci
 
 //CRUD - Creat- (Criar), Read (ler), Update (atualizar), Delete (excluir) //
 const criarFuncionario = (funcionario) => {
-    const dadosFuncionarios = getLocalStorage() 
-    dadosFuncionarios.push (funcionario)
-    setLocalStorage(dadosFuncionarios)   
+    const dadosFuncionarios = getLocalStorage()
+    dadosFuncionarios.push(funcionario)
+    setLocalStorage(dadosFuncionarios)
 }
 
-const readFuncionario = () => getLocalStorage()
+const lerFuncionario = () => getLocalStorage()
 
-const updateFuncionario = (index, funcionario) => {
-    const dadosFuncionarios = readFuncionario()
+const atualizarFuncionario = (index, funcionario) => {
+    const dadosFuncionarios = lerFuncionario()
     dadosFuncionarios[index] = funcionario
     setLocalStorage(dadosFuncionarios)
 }
 
 const deleteFuncionario = (index) => {
-    const dadosFuncionarios = readFuncionario()
-    dadosFuncionarios.splice(index,1)
+    const dadosFuncionarios = lerFuncionario()
+    dadosFuncionarios.splice(index, 1)
     setLocalStorage(dadosFuncionarios)
 }
 
@@ -52,33 +52,42 @@ const apagarCampos = () => {
 const salvarFuncionario = () => {
     if (campoValido()) {
         const funcionario = {
-        nome: document.getElementById('nome').value,
-        email:document.getElementById('email').value,
-        celular:document.getElementById('celular').value,
-        cargo:document.getElementById('cargo').value,
-        cidade:document.getElementById('cidade').value
-    }
-    criarFuncionario(funcionario)
-    atualizarTabela()
-     closeModal()
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            celular: document.getElementById('celular').value,
+            cidade: document.getElementById('cidade').value,
+            cargo: document.getElementById('cargo').value,
+            setor: document.getElementById('setor').value
+        }
+        const index = document.getElementById('nome').dataset.index
+        if (index == 'new') {
+            criarFuncionario(funcionario)
+            atualizarTabela()
+            closeModal()
+        } else {
+            atualizarFuncionario(index, funcionario)
+            atualizarTabela()
+            closeModal()
+        }
     }
 }
 
 document.getElementById('salvar')
-.addEventListener("click", salvarFuncionario)
+    .addEventListener("click", salvarFuncionario)
 
 // adicionando informações na tela //
-const criarLinha = (funcionario) => {
+const criarLinha = (funcionario, index) => {
     const novaLinha = document.createElement('tr')
     novaLinha.innerHTML = `
     <td>${funcionario.nome}</td>
     <td>${funcionario.email}</td>
     <td>${funcionario.celular}</td>
-    <td>${funcionario.cargo}</td>
     <td>${funcionario.cidade}</td>
+    <td>${funcionario.cargo}</td>
+    <td>${funcionario.setor}</td>
     <td>
-        <button type="button" class="botao editar">Editar</button>
-        <button type="button" class="botao excluir">Excluir</button>
+        <button type="button" class="botao editar" id="editar-${index}">Editar</button>
+        <button type="button" class="botao excluir" id="delete-${index}">Excluir</button>
     </td>`
     document.querySelector('#tabelaFuncionario>tbody').appendChild(novaLinha)
 }
@@ -89,9 +98,51 @@ const apagarTabela = () => {
 }
 
 const atualizarTabela = () => {
-    const dadosFuncionarios = readFuncionario()
+    const dadosFuncionarios = lerFuncionario()
     apagarTabela()
     dadosFuncionarios.forEach(criarLinha)
 }
 
 atualizarTabela()
+
+//funções dos botões editar e excluir//
+const preencherCampos = (funcionario) => {
+    document.getElementById('nome').value = funcionario.nome
+    document.getElementById('email').value = funcionario.email
+    document.getElementById('celular').value = funcionario.celular
+    document.getElementById('cargo').value = funcionario.cargo
+    document.getElementById('cidade').value = funcionario.cidade
+    document.getElementById('nome').dataset.index = funcionario.index
+}
+
+const editarFuncionario = (index) => {
+    const funcionario = lerFuncionario()[index]
+    funcionario.index = index
+    preencherCampos(funcionario)
+    openModal()
+}
+
+const editarDelete = (evento) => {
+    if (evento.target.type == 'button') {
+
+        const [action, index] = evento.target.id.split('-')
+
+        if (action == 'editar') {
+            editarFuncionario(index)
+        } else {
+            const funcionario = lerFuncionario()[index]
+            const response = confirm(`Deseja realmente excluir o cliente ${funcionario.nome}`)
+            if (response) {
+                deleteFuncionario(index)
+                atualizarTabela()
+            }
+        }
+    }
+}
+
+document.querySelector('#tabelaFuncionario')
+    .addEventListener("click", editarDelete)
+
+document.getElementById('cancelar')
+    .addEventListener('click', closeModal)
+
