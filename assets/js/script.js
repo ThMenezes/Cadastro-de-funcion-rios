@@ -110,8 +110,9 @@ const preencherCampos = (funcionario) => {
     document.getElementById('nome').value = funcionario.nome
     document.getElementById('email').value = funcionario.email
     document.getElementById('celular').value = funcionario.celular
-    document.getElementById('cargo').value = funcionario.cargo
     document.getElementById('cidade').value = funcionario.cidade
+    document.getElementById('cargo').value = funcionario.cargo
+    document.getElementById('setor').value = funcionario.setor
     document.getElementById('nome').dataset.index = funcionario.index
 }
 
