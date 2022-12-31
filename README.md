@@ -1,4 +1,34 @@
+<div align="center">
+
 # Cadastro de funcionarios
+
+![Nova guia - Google Chrome 31_12_2022 11_29_25](https://user-images.githubusercontent.com/109250801/210140606-a6c05755-adf0-416b-8aea-9e1ec867c18a.png)
+
+</div>
+
+<div align="center">
+
+## Sobre o Projeto:
+
+</div>
+
+CRUD - Creat (Criar), Read (Ler), Update (Atualizar) e Delete (Excluir). Projeto voltado para as empresas poder incluir seus funcionários no banco de dados, atualizar seus dados quando for preciso, e poder excluir funcionário de seu cadastro.
+
+<div align="center">
+
+## Aprendizado adquerido:
+
+</div>
+
+Nesse projeto aprendi sobre banco de dados no localStorage, como enviar e pegar dados utilizando setItem e getItem, transformar os dados em string ou retirar com json.stringify / json.parse, aprendi mais sobre funções callback, arrays, estrutura de tabela e outro formato de versão mobile.
+
+<div align="center">
+
+## Imagem do projeto na versão Mobile:
+
+![Nova guia - Google Chrome 31_12_2022 11_30_31](https://user-images.githubusercontent.com/109250801/210140651-c9f18ffc-1ea7-41de-bf30-d006cb68dbd1.png)
+
+</div>
 
 <div align="center">
 
@@ -13,6 +43,10 @@ https://thmenezes.github.io/Cadastro-de-funcionarios/
 ## Como Utilizar:
 
 </div>
+
+<li>Para adicionar novo funcionário: Pressione o botão de cadastrar funcionário / na versão mobile o botão (+)</li>
+<li>Para editar qualquer informação: Pressione o botão verde de editar.</li>
+<li>Para excluir: Preciosse o botão vermelho de excluir e em seguida é necessário fazer confirmação no alerta que aparecerá.</li>
 
 <div align="center">
 
@@ -32,6 +66,17 @@ https://thmenezes.github.io/Cadastro-de-funcionarios/
 - [x] Adicionar eventos aos botões
 - [x] Limpar os campos após o cadastro
 - [x] Deixar página responsiva
+
+<div align="center">
+
+## Instruçõs de uso:
+
+</div>
+
+Para que possa baixar esse projeto, será necessário:
+* Fazer clone do projeto, no botão verde escrito <>Code.
+* Selecionar a opção Download ZIP 
+* Ter instalado na máquina um editor de código, no meu caso utilizo Visual Studio Code.
 
 <div align="center">
 
